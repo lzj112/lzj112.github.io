@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="随笔,">
+  <meta name="keywords" content="C++沉思录,">
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="路漫漫其修远兮">
-<meta name="keywords" content="随笔">
+<meta name="description" content="前言本次读书笔记为C++沉思录第五章, 介绍的是代理类, 代理类是句柄类的一种, 较为简单 代理类并不局限于C++语言, 是一种广泛的编程思想">
+<meta name="keywords" content="C++沉思录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello My New World">
-<meta property="og:url" content="http://lzj112.github.io/2019/07/08/Hello My World/index.html">
+<meta property="og:title" content="C++代理类">
+<meta property="og:url" content="http://lzj112.github.io/2019/07/14/C++代理类/index.html">
 <meta property="og:site_name" content="LZJ`s BLOG">
-<meta property="og:description" content="路漫漫其修远兮">
+<meta property="og:description" content="前言本次读书笔记为C++沉思录第五章, 介绍的是代理类, 代理类是句柄类的一种, 较为简单 代理类并不局限于C++语言, 是一种广泛的编程思想">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-14T05:28:30.871Z">
+<meta property="og:updated_time" content="2019-07-14T08:28:05.859Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello My New World">
-<meta name="twitter:description" content="路漫漫其修远兮">
+<meta name="twitter:title" content="C++代理类">
+<meta name="twitter:description" content="前言本次读书笔记为C++沉思录第五章, 介绍的是代理类, 代理类是句柄类的一种, 较为简单 代理类并不局限于C++语言, 是一种广泛的编程思想">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://lzj112.github.io/2019/07/08/Hello My World/">
+  <link rel="canonical" href="http://lzj112.github.io/2019/07/14/C++代理类/">
 
 
 
 
 
-  <title>Hello My New World | LZJ`s BLOG</title>
+  <title>C++代理类 | LZJ`s BLOG</title>
   
 
 
@@ -302,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lzj112.github.io/2019/07/08/Hello My World/">
+    <link itemprop="mainEntityOfPage" href="http://lzj112.github.io/2019/07/14/C++代理类/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lvbai">
@@ -319,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello My New World</h1>
+          <h1 class="post-title" itemprop="name headline">C++代理类</h1>
         
 
         <div class="post-meta">
@@ -331,8 +331,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-08T21:24:48+08:00">
-                2019-07-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-14T15:26:53+08:00">
+                2019-07-14
               </time>
             
 
@@ -354,8 +354,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/杂谈/" itemprop="url" rel="index">
-                    <span itemprop="name">杂谈</span>
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
                   </a>
                 </span>
 
@@ -372,8 +372,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/08/Hello My World/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/07/08/Hello My World/" itemprop="commentsCount"></span>
+                <a href="/2019/07/14/C++代理类/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/07/14/C++代理类/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -395,7 +395,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  7
+                  726
                 </span>
               
 
@@ -411,7 +411,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  3
                 </span>
               
             </div>
@@ -432,7 +432,29 @@
       
 
       
-        <p>路漫漫其修远兮</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本次读书笔记为<code>C++沉思录</code>第五章, 介绍的是代理类, 代理类是句柄类的一种, 较为简单</p>
+<p>代理类并不局限于C++语言, 是一种广泛的编程思想</p>
+<a id="more"></a> 
+
+<h1 id="面临的问题"><a href="#面临的问题" class="headerlink" title="面临的问题"></a>面临的问题</h1><p>C++通过虚函数来实现的<code>运行时多态</code>, 但是我们在构建一个容器存储时(不管是内建类型还是自定义类型容器)只能获得编译时类型一致的元素值. </p>
+<p>例如:<code>std::vector&lt;T&gt;</code>, 我们声明一个存储 T 类型的 vector, 但是有时实际中我们拥有很多继承于同一基类的派生类对象, 若是容器中只能包含相同类型的元素, 我们就无法在该容器中包含同一个基类不同派生类对象了</p>
+<p>而我们能想到的一个经典办法就是: <strong>存储指针</strong>; 不过存储指针必然伴随着内存管理的问题, 即如何得知指针指向的对象是否还存在</p>
+<p>那么我们现在面临的问题就是: <strong>当我们将继承和容器共用时, 要管理内存分配和把不同类型对象放入同一容器</strong></p>
+<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>所谓<strong>计算机领域的任何问题, 都能通过增加一个中间层来解决</strong></p>
+<h2 id="代理类"><a href="#代理类" class="headerlink" title="代理类"></a>代理类</h2><p>代理类(surrogate)就是做这样的工作: 让我们忽略正在处理的对象的准确类型.</p>
+<blockquote>
+<p>代理类是句柄(handle)类中最简单的一种</p>
+</blockquote>
+<p>现有如下例子:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Vehicle 	//基类</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	virtual double weight() const = 0;</span><br><span class="line">    virtual void start() = 0;</span><br><span class="line">        // ...</span><br><span class="line">&#125;;</span><br><span class="line">//派生类</span><br><span class="line">class RoadVehicle : public Vehicle&#123; / * ... */ &#125;;</span><br><span class="line">class AutoVehicle : public RoadVehicle&#123; /* ... */&#125;;</span><br><span class="line">class Aircraft : public Vehicle &#123; / * ... */&#125;;</span><br><span class="line">class Helicopter : public Aircraft &#123; / * ... */&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>首先, 我们给基类和所有派生类增加<code>copy</code>接口, 返回对应的确切类型 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Vehicle</span><br><span class="line">&#123;</span><br><span class="line">     public:</span><br><span class="line">          virtual Vehicle * copy() const = 0;</span><br><span class="line">     /**/</span><br><span class="line">&#125;;	//Vehicle的派生类都自实现copy函数</span><br><span class="line"></span><br><span class="line">class Truck : public Vehicle</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">            Vehicle* copy() const </span><br><span class="line">            &#123; </span><br><span class="line">            		return new Truck(*this); </span><br><span class="line">            &#125;</span><br><span class="line">     /**/</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">//同时也该增加一个虚析构函数：</span><br><span class="line">class Vehicle</span><br><span class="line">&#123;</span><br><span class="line">          public：</span><br><span class="line">               virtual double weight() const = 0;</span><br><span class="line">               virtual void start() = 0;   </span><br><span class="line">               virtual Vehicle * copy() const = 0;</span><br><span class="line">               virtual ~Vehicle() &#123;&#125;</span><br><span class="line">               // ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>代理类:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">class VehicleSurrogate</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	VehicleSurrogate() 	//缺省构造函数空代理</span><br><span class="line">		: vp(NULL) &#123;&#125;;</span><br><span class="line">	VehicleSurrogate(const Vehicle&amp; v) //针对所有继承自Vehicle的派生类</span><br><span class="line">		: vp(v.copy()) &#123;&#125;;</span><br><span class="line">	~VehicleSurrogate() &#123;&#125;;</span><br><span class="line">	VehicleSurrogate(const VehicleSurrogate&amp; v) </span><br><span class="line">		: vp(v.vp ? v.vp-&gt;copy() : NULL) &#123;&#125;; //v.vp非零检测</span><br><span class="line">	VehicleSurrogate&amp; operator=(const VehicleSurrogate&amp; v) </span><br><span class="line">	&#123;</span><br><span class="line">		if (this != &amp;v) // 确保没有将代理赋值给它自身</span><br><span class="line">		&#123;</span><br><span class="line">　　		delete vp;</span><br><span class="line">　　		vp = (v.vp ? v.vp-&gt;copy() : NULL);</span><br><span class="line">		&#125;</span><br><span class="line">		return *this;</span><br><span class="line">	&#125;;</span><br><span class="line"> </span><br><span class="line">//来自类Vehicle的操作</span><br><span class="line">	void start()</span><br><span class="line">	&#123;</span><br><span class="line">		if (vp == 0)</span><br><span class="line">　　	throw &quot;empty VehicleSurrogate.start()&quot;;</span><br><span class="line"> </span><br><span class="line">		vp-&gt;start();</span><br><span class="line">	&#125;;</span><br><span class="line">        double weight() const </span><br><span class="line">        &#123;</span><br><span class="line">               if(vp == 0)</span><br><span class="line">                    throw &quot;empty VehcileSurrogate.weight()&quot;;</span><br><span class="line">               return vp-&gt;weight();</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">private:</span><br><span class="line">　　Vehicle* vp;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>代理类很好理解, 就是一种管理句柄的句柄类, 提供了一个中间层<br>重点是要学习这种思想</p>
 
       
     </div>
@@ -450,7 +472,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/随笔/" rel="tag"># 随笔</a>
+            <a href="/tags/C-沉思录/" rel="tag"># C++沉思录</a>
           
         </div>
       
@@ -463,15 +485,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/07/08/Hello My World/" rel="next" title="Hello My New World">
+                <i class="fa fa-chevron-left"></i> Hello My New World
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/14/C++代理类/" rel="prev" title="C++代理类">
-                C++代理类 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -532,8 +554,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -651,6 +682,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面临的问题"><span class="nav-number">2.</span> <span class="nav-text">面临的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决办法"><span class="nav-number">3.</span> <span class="nav-text">解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代理类"><span class="nav-number">3.1.</span> <span class="nav-text">代理类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
