@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[test]]></title>
+    <url>%2F2019%2F07%2F14%2Ftest%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[Hello My New World]]></title>
     <url>%2F2019%2F07%2F08%2FHello%20My%20World%2F</url>
     <content type="text"><![CDATA[路漫漫其修远兮]]></content>
