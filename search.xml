@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Hello My World]]></title>
+    <title><![CDATA[Hello My New World]]></title>
     <url>%2F2019%2F07%2F08%2FHello%20My%20World%2F</url>
     <content type="text"><![CDATA[路漫漫其修远兮]]></content>
       <categories>
         <category>杂谈</category>
       </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
   </entry>
 </search>
