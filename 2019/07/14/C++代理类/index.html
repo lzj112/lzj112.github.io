@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="LZJ`s BLOG">
 <meta property="og:description" content="前言本次读书笔记为C++沉思录第五章, 介绍的是代理类, 代理类是句柄类的一种, 较为简单 代理类并不局限于C++语言, 是一种广泛的编程思想">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-14T08:28:05.859Z">
+<meta property="og:updated_time" content="2019-07-15T02:24:28.602Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++代理类">
 <meta name="twitter:description" content="前言本次读书笔记为C++沉思录第五章, 介绍的是代理类, 代理类是句柄类的一种, 较为简单 代理类并不局限于C++语言, 是一种广泛的编程思想">
@@ -395,7 +395,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  726
+                  840
                 </span>
               
 
@@ -454,7 +454,12 @@
 <p>代理类:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">class VehicleSurrogate</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	VehicleSurrogate() 	//缺省构造函数空代理</span><br><span class="line">		: vp(NULL) &#123;&#125;;</span><br><span class="line">	VehicleSurrogate(const Vehicle&amp; v) //针对所有继承自Vehicle的派生类</span><br><span class="line">		: vp(v.copy()) &#123;&#125;;</span><br><span class="line">	~VehicleSurrogate() &#123;&#125;;</span><br><span class="line">	VehicleSurrogate(const VehicleSurrogate&amp; v) </span><br><span class="line">		: vp(v.vp ? v.vp-&gt;copy() : NULL) &#123;&#125;; //v.vp非零检测</span><br><span class="line">	VehicleSurrogate&amp; operator=(const VehicleSurrogate&amp; v) </span><br><span class="line">	&#123;</span><br><span class="line">		if (this != &amp;v) // 确保没有将代理赋值给它自身</span><br><span class="line">		&#123;</span><br><span class="line">　　		delete vp;</span><br><span class="line">　　		vp = (v.vp ? v.vp-&gt;copy() : NULL);</span><br><span class="line">		&#125;</span><br><span class="line">		return *this;</span><br><span class="line">	&#125;;</span><br><span class="line"> </span><br><span class="line">//来自类Vehicle的操作</span><br><span class="line">	void start()</span><br><span class="line">	&#123;</span><br><span class="line">		if (vp == 0)</span><br><span class="line">　　	throw &quot;empty VehicleSurrogate.start()&quot;;</span><br><span class="line"> </span><br><span class="line">		vp-&gt;start();</span><br><span class="line">	&#125;;</span><br><span class="line">        double weight() const </span><br><span class="line">        &#123;</span><br><span class="line">               if(vp == 0)</span><br><span class="line">                    throw &quot;empty VehcileSurrogate.weight()&quot;;</span><br><span class="line">               return vp-&gt;weight();</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">private:</span><br><span class="line">　　Vehicle* vp;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>代理类很好理解, 就是一种管理句柄的句柄类, 提供了一个中间层<br>重点是要学习这种思想</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>代理类很好理解, 就是一种管理句柄的句柄类, 提供了一个中间层, 让所有子类自定义了一个 copy 函数, 返回自身的复制, 代理类中有一个基类指针保存子类</p>
+<blockquote>
+<p>返回自身的复制? 这听起来在某些时候行不通, 可能是因为复制代价太大或者根本就无法复制, 解决办法就是本书下一章节介绍的<code>句柄类</code>(也就是<strong>智能指针</strong>)</p>
+</blockquote>
+<hr>
+<p>该章介绍的代理类很好理解, 需要掌握的是这种编程思想</p>
 
       
     </div>
@@ -494,6 +499,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/15/诗词/" rel="prev" title="诗词">
+                诗词 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -581,7 +590,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -603,7 +612,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -726,7 +735,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">733</span>
+    <span title="Site words total count">886</span>
   
 </div>
 
