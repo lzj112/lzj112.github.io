@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="LZJ`s BLOG">
 <meta property="og:description" content="前言本次读书笔记为C++沉思录第五章, 介绍的是代理类, 代理类是句柄类的一种, 较为简单 代理类并不局限于C++语言, 是一种广泛的编程思想">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-15T02:24:28.602Z">
+<meta property="og:updated_time" content="2019-07-15T02:50:02.628Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++代理类">
 <meta name="twitter:description" content="前言本次读书笔记为C++沉思录第五章, 介绍的是代理类, 代理类是句柄类的一种, 较为简单 代理类并不局限于C++语言, 是一种广泛的编程思想">
@@ -395,7 +395,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  840
+                  861
                 </span>
               
 
@@ -456,7 +456,7 @@
 
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>代理类很好理解, 就是一种管理句柄的句柄类, 提供了一个中间层, 让所有子类自定义了一个 copy 函数, 返回自身的复制, 代理类中有一个基类指针保存子类</p>
 <blockquote>
-<p>返回自身的复制? 这听起来在某些时候行不通, 可能是因为复制代价太大或者根本就无法复制, 解决办法就是本书下一章节介绍的<code>句柄类</code>(也就是<strong>智能指针</strong>)</p>
+<p>返回自身的复制? 这听起来在某些时候行不通, 可能是因为复制代价太大或者根本就无法复制, 解决办法就是本书下一章节介绍的<code>句柄类</code>(也就是<strong>shared_ptr</strong>, 智能指针不仅仅是 shared_ptr, 其他的智能指针和句柄类并不相同)</p>
 </blockquote>
 <hr>
 <p>该章介绍的代理类很好理解, 需要掌握的是这种编程思想</p>
@@ -735,7 +735,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">886</span>
+    <span title="Site words total count">1.1k</span>
   
 </div>
 
