@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="C++沉思录,">
+  <meta name="keywords" content="Nginx C,">
 
 
 
@@ -86,18 +86,20 @@
 
 
 
-<meta name="description" content="前言本次读书笔记为C++沉思录第五章, 介绍的是代理类, 代理类是句柄类的一种, 较为简单 代理类并不局限于C++语言, 是一种广泛的编程思想">
-<meta name="keywords" content="C++沉思录">
+<meta name="description" content="Nginx 是一个多进程的模型, 后台进程包括一个 master 进程和多个 worker 进程.master 进程负责和用户进行交互以及对 worker 进程的管理;worker 进程进行各类事件的处理">
+<meta name="keywords" content="Nginx C">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++代理类">
-<meta property="og:url" content="http://lzj112.github.io/2019/07/14/C++代理类/index.html">
+<meta property="og:title" content="Nginx源码学习:惊群的处理">
+<meta property="og:url" content="http://lzj112.github.io/2019/07/21/Nginx源码学习:惊群的处理/index.html">
 <meta property="og:site_name" content="LZJ`s BLOG">
-<meta property="og:description" content="前言本次读书笔记为C++沉思录第五章, 介绍的是代理类, 代理类是句柄类的一种, 较为简单 代理类并不局限于C++语言, 是一种广泛的编程思想">
+<meta property="og:description" content="Nginx 是一个多进程的模型, 后台进程包括一个 master 进程和多个 worker 进程.master 进程负责和用户进行交互以及对 worker 进程的管理;worker 进程进行各类事件的处理">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-15T02:50:02.628Z">
+<meta property="og:image" content="http://lzj112.github.io/2019/07/21/Nginx源码学习:惊群的处理/nginx_1.png">
+<meta property="og:updated_time" content="2019-07-28T07:50:19.097Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++代理类">
-<meta name="twitter:description" content="前言本次读书笔记为C++沉思录第五章, 介绍的是代理类, 代理类是句柄类的一种, 较为简单 代理类并不局限于C++语言, 是一种广泛的编程思想">
+<meta name="twitter:title" content="Nginx源码学习:惊群的处理">
+<meta name="twitter:description" content="Nginx 是一个多进程的模型, 后台进程包括一个 master 进程和多个 worker 进程.master 进程负责和用户进行交互以及对 worker 进程的管理;worker 进程进行各类事件的处理">
+<meta name="twitter:image" content="http://lzj112.github.io/2019/07/21/Nginx源码学习:惊群的处理/nginx_1.png">
 
 
 
@@ -127,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://lzj112.github.io/2019/07/14/C++代理类/">
+  <link rel="canonical" href="http://lzj112.github.io/2019/07/21/Nginx源码学习:惊群的处理/">
 
 
 
 
 
-  <title>C++代理类 | LZJ`s BLOG</title>
+  <title>Nginx源码学习:惊群的处理 | LZJ`s BLOG</title>
   
 
 
@@ -302,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lzj112.github.io/2019/07/14/C++代理类/">
+    <link itemprop="mainEntityOfPage" href="http://lzj112.github.io/2019/07/21/Nginx源码学习:惊群的处理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lvbai">
@@ -319,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C++代理类</h1>
+          <h1 class="post-title" itemprop="name headline">Nginx源码学习:惊群的处理</h1>
         
 
         <div class="post-meta">
@@ -331,8 +333,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-14T15:26:53+08:00">
-                2019-07-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-21T10:28:04+08:00">
+                2019-07-21
               </time>
             
 
@@ -354,8 +356,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
+                  <a href="/categories/网络编程/" itemprop="url" rel="index">
+                    <span itemprop="name">网络编程</span>
                   </a>
                 </span>
 
@@ -372,8 +374,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/14/C++代理类/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/07/14/C++代理类/" itemprop="commentsCount"></span>
+                <a href="/2019/07/21/Nginx源码学习:惊群的处理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/07/21/Nginx源码学习:惊群的处理/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -395,7 +397,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  861
+                  1.9k
                 </span>
               
 
@@ -411,7 +413,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  3
+                  7
                 </span>
               
             </div>
@@ -432,34 +434,59 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本次读书笔记为<code>C++沉思录</code>第五章, 介绍的是代理类, 代理类是句柄类的一种, 较为简单</p>
-<p>代理类并不局限于C++语言, 是一种广泛的编程思想</p>
-<a id="more"></a> 
+        <p>Nginx 是一个多进程的模型, 后台进程包括一个 master 进程和多个 worker 进程.<br>master 进程负责和用户进行交互以及对 worker 进程的管理;<br>worker 进程进行各类事件的处理</p>
+<a id="more"></a>
 
-<h1 id="面临的问题"><a href="#面临的问题" class="headerlink" title="面临的问题"></a>面临的问题</h1><p>C++通过虚函数来实现的<code>运行时多态</code>, 但是我们在构建一个容器存储时(不管是内建类型还是自定义类型容器)只能获得编译时类型一致的元素值. </p>
-<p>例如:<code>std::vector&lt;T&gt;</code>, 我们声明一个存储 T 类型的 vector, 但是有时实际中我们拥有很多继承于同一基类的派生类对象, 若是容器中只能包含相同类型的元素, 我们就无法在该容器中包含同一个基类不同派生类对象了</p>
-<p>而我们能想到的一个经典办法就是: <strong>存储指针</strong>; 不过存储指针必然伴随着内存管理的问题, 即如何得知指针指向的对象是否还存在</p>
-<p>那么我们现在面临的问题就是: <strong>当我们将继承和容器共用时, 要管理内存分配和把不同类型对象放入同一容器</strong></p>
-<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>所谓<strong>计算机领域的任何问题, 都能通过增加一个中间层来解决</strong></p>
-<h2 id="代理类"><a href="#代理类" class="headerlink" title="代理类"></a>代理类</h2><p>代理类(surrogate)就是做这样的工作: 让我们忽略正在处理的对象的准确类型.</p>
+<p><img src="nginx_1.png" alt></p>
+<h1 id="Nginx-处理惊群"><a href="#Nginx-处理惊群" class="headerlink" title="Nginx 处理惊群"></a>Nginx 处理惊群</h1><p>上面介绍过, nginx 中所有的 worker 进程都继承了 master 进程的监听 socketfd, 调用 epoll_wait 进程等待, 这样的话如果没有任何处理, 那么一个新连接到来时, 会有多个 worker 进程会唤醒, 但是只有一个 worker 进程会 accept 成功, 其余皆失败, 那么这样就导致了性能的浪费</p>
+<p><strong>accept已经不会再导致惊群的出现</strong><br>linux 2.6 版本之前, 监听同一个 socketfd 的进程会挂在同一个等待队列上, 当请求到来时, 唤醒所有等待的进程,<br>2.6 版本之后, 引入了一个标记位<code>WQ_FLAG_EXCLUSIVE</code>, 设置等待队列的<code>flag</code>为<code>EXCLUSIVE</code>, 表示一次只有一个进程会被唤醒, 当有新连接进来时, 在唤醒等待队列的函数里(<code>__wake_up_common()</code>), 会将传进来的参数(<code>nr_exclusive</code>, 值1)和<code>WQ_FLAG_EXCLUSIVE</code>做 <code>&amp;</code>运算, 结果为真, 跳出循环</p>
+<p><strong>nginx的处理方式</strong></p>
+<ol>
+<li>使用锁</li>
+<li>使用 epoll 的<code>EPOLLEXCLUSIVE</code>选项</li>
+<li>使用<code>SO_REUSEPORT</code>选项</li>
+</ol>
+<h2 id="使用锁的方式"><a href="#使用锁的方式" class="headerlink" title="使用锁的方式"></a>使用锁的方式</h2><p>nginx 中自己实现了锁机制, </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">typedef struct &#123;</span><br><span class="line">#if (NGX_HAVE_ATOMIC_OPS)	//这个宏判断是否支持原子操作</span><br><span class="line">    ngx_atomic_t  *lock;</span><br><span class="line">#if (NGX_HAVE_POSIX_SEM)	//是否支持信号量</span><br><span class="line">    ngx_atomic_t  *wait;</span><br><span class="line">    ngx_uint_t     semaphore;</span><br><span class="line">    sem_t          sem;</span><br><span class="line">#endif</span><br><span class="line">#else		//不支持原子变量, 使用文件锁, 效率较低	</span><br><span class="line">    ngx_fd_t       fd;</span><br><span class="line">    u_char        *name;</span><br><span class="line">#endif</span><br><span class="line">    ngx_uint_t     spin;	//获取锁时尝试的自旋次数,使用原子操作实现时才有意义</span><br><span class="line">&#125; ngx_shmtx_t;</span><br></pre></td></tr></table></figure>
+
+<p>不支持原子变量时, 会使用文件锁来实现互斥锁<br>支持原子变量时会使用变量会使用原子变量操作来实现一个自旋锁, 其中<code>spin</code>表示自旋次数,<br>而最新的 nginx 代码增加了这个支持信号量的判断是在<strong>支持信号量</strong>的情况下, 如果自旋次数达到了上限而进程还未获取到锁, 则进程会在信号量上阻塞, 进入睡眠状态; <strong>不支持信号量</strong>情况下, 直接让出 CPU</p>
+<ul>
+<li><p>在<code>ngx_event.c/ngx_event_process_init()</code>中, 初始化     <code>ngx_use_accept_mutex</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//如果使用了master worker的多进程模式.且worker进程数量&gt;1,且配置文件里设置了使用accept_mutex</span><br><span class="line">    if (ccf-&gt;master &amp;&amp; ccf-&gt;worker_processes &gt; 1 &amp;&amp; ecf-&gt;accept_mutex) </span><br><span class="line">    &#123;</span><br><span class="line">        ngx_use_accept_mutex = 1;	//初始化该变量表示nginx使用accept互斥</span><br><span class="line">        ngx_accept_mutex_held = 0;	//表示当前是否已经持有锁</span><br><span class="line">        ngx_accept_mutex_delay = ecf-&gt;accept_mutex_delay;	//表示当获得锁失败后再次请求锁的价格时间</span><br><span class="line"></span><br><span class="line">    &#125; </span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        ngx_use_accept_mutex = 0;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置文件中的 <code>events</code>区域下可以设置<code>accept_mutex</code>选项, 不设置默认为关闭</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">events &#123;</span><br><span class="line">     accept_mutex on;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>ngx_event_accept.c</code>会初始化在<code>ngx_event.c</code>声明的变量<code>ngx_accept_disabled</code>, 这个变量是一个阈值</p>
+</li>
+</ul>
+<p>如果大于 0, 表示当前进程处于<strong>高负载</strong>,放弃接收新连接, 继续处理本进程事件, 并且<code>ngx_accept_disabled</code>减一, 表示让出了一次 accept 的机会, 负载减轻, 直到该值小于0, 重新进入低负载状态<br>小于 0, 表示处于<strong>低负载</strong>, 可以继续申请 accept 锁, 接收新连接</p>
 <blockquote>
-<p>代理类是句柄(handle)类中最简单的一种</p>
+<p>相当于实现了一个负载均衡</p>
 </blockquote>
-<p>现有如下例子:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Vehicle 	//基类</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	virtual double weight() const = 0;</span><br><span class="line">    virtual void start() = 0;</span><br><span class="line">        // ...</span><br><span class="line">&#125;;</span><br><span class="line">//派生类</span><br><span class="line">class RoadVehicle : public Vehicle&#123; / * ... */ &#125;;</span><br><span class="line">class AutoVehicle : public RoadVehicle&#123; /* ... */&#125;;</span><br><span class="line">class Aircraft : public Vehicle &#123; / * ... */&#125;;</span><br><span class="line">class Helicopter : public Aircraft &#123; / * ... */&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ngx_accept_disabled = ngx_cycle-&gt;connection_n / 8 - ngx_cycle-&gt;free_connection_n;	//当前连接数</span><br></pre></td></tr></table></figure>
 
-<p>首先, 我们给基类和所有派生类增加<code>copy</code>接口, 返回对应的确切类型 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Vehicle</span><br><span class="line">&#123;</span><br><span class="line">     public:</span><br><span class="line">          virtual Vehicle * copy() const = 0;</span><br><span class="line">     /**/</span><br><span class="line">&#125;;	//Vehicle的派生类都自实现copy函数</span><br><span class="line"></span><br><span class="line">class Truck : public Vehicle</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">            Vehicle* copy() const </span><br><span class="line">            &#123; </span><br><span class="line">            		return new Truck(*this); </span><br><span class="line">            &#125;</span><br><span class="line">     /**/</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">//同时也该增加一个虚析构函数：</span><br><span class="line">class Vehicle</span><br><span class="line">&#123;</span><br><span class="line">          public：</span><br><span class="line">               virtual double weight() const = 0;</span><br><span class="line">               virtual void start() = 0;   </span><br><span class="line">               virtual Vehicle * copy() const = 0;</span><br><span class="line">               virtual ~Vehicle() &#123;&#125;</span><br><span class="line">               // ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>在<code>ngx_event.c/ngx_process_events_and_timers()</code>中判断是否使用锁</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">//每个worker进程在该函数中处理事件</span><br><span class="line">void</span><br><span class="line">ngx_process_events_and_timers(ngx_cycle_t *cycle)</span><br><span class="line">&#123;</span><br><span class="line">    ngx_uint_t  flags;</span><br><span class="line">    ngx_msec_t  timer, delta;</span><br><span class="line"></span><br><span class="line">    if (ngx_timer_resolution) &#123;</span><br><span class="line">        timer = NGX_TIMER_INFINITE;</span><br><span class="line">        flags = 0;</span><br><span class="line"></span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        timer = ngx_event_find_timer();</span><br><span class="line">        flags = NGX_UPDATE_TIME;</span><br><span class="line"></span><br><span class="line">#if (NGX_WIN32)</span><br><span class="line"></span><br><span class="line">        /* handle signals from master in case of network inactivity */</span><br><span class="line"></span><br><span class="line">        if (timer == NGX_TIMER_INFINITE || timer &gt; 500) &#123;</span><br><span class="line">            timer = 500;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //ngx_use_accept_mutex标志位表示是否需要对accept枷锁来解决惊群问题 </span><br><span class="line">    //当worker进程数&gt;1且配置文件中</span><br><span class="line">    if (ngx_use_accept_mutex) </span><br><span class="line">    &#123;</span><br><span class="line">        if (ngx_accept_disabled &gt; 0)     //当前处于高负载,放弃竞争accept锁,</span><br><span class="line">        &#123;  </span><br><span class="line">            ngx_accept_disabled--;  //负载减轻</span><br><span class="line"></span><br><span class="line">        &#125; </span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            //尝试获取锁,出错返回,成功会将监听套接字加入到当前的epoll事件驱动模块中</span><br><span class="line">            if (ngx_trylock_accept_mutex(cycle) == NGX_ERROR) </span><br><span class="line">            &#123;</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">            //为1表示已经获得锁</span><br><span class="line">            if (ngx_accept_mutex_held) </span><br><span class="line">            &#123;</span><br><span class="line">                //该标记表示如果有新连接或者数据到来时,先保存该事件,等释放锁之后,在进行accept或者读取,</span><br><span class="line">                //因为我们应该保证持有锁的时间尽可能短</span><br><span class="line">                flags |= NGX_POST_EVENTS;   </span><br><span class="line">            &#125; </span><br><span class="line">            else </span><br><span class="line">            &#123;</span><br><span class="line">                //没有获得锁就设置timer定时器,在epoll中休眠(中途可以被唤醒,比如有新连接到达),然后继续tryLock</span><br><span class="line">                if (timer == NGX_TIMER_INFINITE</span><br><span class="line">                    || timer &gt; ngx_accept_mutex_delay)</span><br><span class="line">                &#123;</span><br><span class="line">                    timer = ngx_accept_mutex_delay;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //计算ngx_process_events函数执行花费的时间</span><br><span class="line">    delta = ngx_current_msec;</span><br><span class="line"></span><br><span class="line">    //在linux下使用epoll时,该函数对应的是ngx_epoll_process_events函数</span><br><span class="line">    (void) ngx_process_events(cycle, timer, flags);</span><br><span class="line"></span><br><span class="line">    //计算用时</span><br><span class="line">    delta = ngx_current_msec - delta;</span><br><span class="line"></span><br><span class="line">    //记录log</span><br><span class="line">    ngx_log_debug1(NGX_LOG_DEBUG_EVENT, cycle-&gt;log, 0,</span><br><span class="line">                   &quot;timer delta: %M&quot;, delta);</span><br><span class="line">    //执行对应的新建立的连接的延迟队列中的事件</span><br><span class="line">    ngx_event_process_posted(cycle, &amp;ngx_posted_accept_events);</span><br><span class="line"></span><br><span class="line">    //如果持有锁,释放</span><br><span class="line">    if (ngx_accept_mutex_held) &#123;</span><br><span class="line">        ngx_shmtx_unlock(&amp;ngx_accept_mutex);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //ngx_process_enevts耗时&gt;0时,执行所有的超时事件</span><br><span class="line">    if (delta) &#123;</span><br><span class="line">        ngx_event_expire_timers();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //执行普通事件延迟队列中的事件</span><br><span class="line">    ngx_event_process_posted(cycle, &amp;ngx_posted_events);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后就是<code>ngx_event_accept.c/ngx_trylock_accept_mutex()</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">//尝试获取锁</span><br><span class="line">ngx_int_t</span><br><span class="line">ngx_trylock_accept_mutex(ngx_cycle_t *cycle)</span><br><span class="line">&#123;</span><br><span class="line">    //尝试获取ngx_accept_mutex,非阻塞的</span><br><span class="line">    if (ngx_shmtx_trylock(&amp;ngx_accept_mute</span><br><span class="line">    &#123;</span><br><span class="line">        ngx_log_debug0(NGX_LOG_DEBUG_EVENT, cycle-&gt;log, 0,</span><br><span class="line">                       &quot;accept mutex locked&quot;);</span><br><span class="line">        //如果本来就拥有锁直接返回OK</span><br><span class="line">        //ngx_accept_events宏是用于eventport的,eventport也是一个事件驱动库,他会每次调用完事件后自动清除,</span><br><span class="line">        //会将ngx_accept_events置1需要重新添加</span><br><span class="line">        //应该是不用管的</span><br><span class="line">        if (ngx_accept_mutex_held &amp;&amp; ngx_accept_events == 0) &#123;</span><br><span class="line">            return NGX_OK;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //将监听连接上的所有读事件添加到当前epoll事件合集</span><br><span class="line">        if (ngx_enable_accept_events(cycle) == NGX_ERROR) &#123;</span><br><span class="line">            ngx_shmtx_unlock(&amp;ngx_accept_mutex);</span><br><span class="line">            return NGX_ERROR;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ngx_accept_events = 0;</span><br><span class="line">        ngx_accept_mutex_held = 1;</span><br><span class="line"></span><br><span class="line">        return NGX_OK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ngx_log_debug1(NGX_LOG_DEBUG_EVENT, cycle-&gt;log, 0,</span><br><span class="line">                   &quot;accept mutex lock failed: %ui&quot;, ngx_accept_mutex_held);</span><br><span class="line"></span><br><span class="line">    //如果前面获取失败了,这还是1就要处理为0</span><br><span class="line">    if (ngx_accept_mutex_held) &#123;</span><br><span class="line">        if (ngx_disable_accept_events(cycle, 0) == NGX_ERROR) &#123;</span><br><span class="line">            return NGX_ERROR;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ngx_accept_mutex_held = 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return NGX_OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>代理类:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">class VehicleSurrogate</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	VehicleSurrogate() 	//缺省构造函数空代理</span><br><span class="line">		: vp(NULL) &#123;&#125;;</span><br><span class="line">	VehicleSurrogate(const Vehicle&amp; v) //针对所有继承自Vehicle的派生类</span><br><span class="line">		: vp(v.copy()) &#123;&#125;;</span><br><span class="line">	~VehicleSurrogate() &#123;&#125;;</span><br><span class="line">	VehicleSurrogate(const VehicleSurrogate&amp; v) </span><br><span class="line">		: vp(v.vp ? v.vp-&gt;copy() : NULL) &#123;&#125;; //v.vp非零检测</span><br><span class="line">	VehicleSurrogate&amp; operator=(const VehicleSurrogate&amp; v) </span><br><span class="line">	&#123;</span><br><span class="line">		if (this != &amp;v) // 确保没有将代理赋值给它自身</span><br><span class="line">		&#123;</span><br><span class="line">　　		delete vp;</span><br><span class="line">　　		vp = (v.vp ? v.vp-&gt;copy() : NULL);</span><br><span class="line">		&#125;</span><br><span class="line">		return *this;</span><br><span class="line">	&#125;;</span><br><span class="line"> </span><br><span class="line">//来自类Vehicle的操作</span><br><span class="line">	void start()</span><br><span class="line">	&#123;</span><br><span class="line">		if (vp == 0)</span><br><span class="line">　　	throw &quot;empty VehicleSurrogate.start()&quot;;</span><br><span class="line"> </span><br><span class="line">		vp-&gt;start();</span><br><span class="line">	&#125;;</span><br><span class="line">        double weight() const </span><br><span class="line">        &#123;</span><br><span class="line">               if(vp == 0)</span><br><span class="line">                    throw &quot;empty VehcileSurrogate.weight()&quot;;</span><br><span class="line">               return vp-&gt;weight();</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">private:</span><br><span class="line">　　Vehicle* vp;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>代理类很好理解, 就是一种管理句柄的句柄类, 提供了一个中间层, 让所有子类自定义了一个 copy 函数, 返回自身的复制, 代理类中有一个基类指针保存子类</p>
+</li>
+</ul>
+<p>nginx 采用锁的方式避免惊群的逻辑很简单, 就是只能有一个进程可以获得接收新连接的机会</p>
+<h2 id="采用EPOLLEXCLUSIVE"><a href="#采用EPOLLEXCLUSIVE" class="headerlink" title="采用EPOLLEXCLUSIVE"></a>采用EPOLLEXCLUSIVE</h2><p>这个选项作为<code>epoll_ctl</code>的第二个参数, 是专门用来解决多个 epoll 句柄监听了同一个套接字导致的惊群问题</p>
 <blockquote>
-<p>返回自身的复制? 这听起来在某些时候行不通, 可能是因为复制代价太大或者根本就无法复制, 解决办法就是本书下一章节介绍的<code>句柄类</code>(也就是<strong>shared_ptr</strong>, 智能指针不仅仅是 shared_ptr, 其他的智能指针和句柄类并不相同)</p>
+<p>This new flag allows for exclusive wakeups when there are multiple epfds attached to a shared fd event source.<br>The implementation walks the list of exclusive waiters, and queues an event to each epfd, until it finds the first waiter that has threads blocked on it via epoll_wait(). The idea is to search for threads which are idle and ready to process the wakeup events. Thus, we queue an event to at least 1 epfd, but may still potentially queue an event to all epfds that are attached to the shared fd source.</p>
 </blockquote>
+<blockquote>
+<p>当多个 epfd 添加了共享的fd事件源时，这个新标志允许独占唤醒。<br>该实现遍历独占等待列表，并将事件排队到每个epfd，直到找到第一个通过epoll_wait()在其上阻塞线程的等待者。其思想是搜索空闲的线程，并准备处理唤醒事件。因此，我们至少将一个事件排队到一个epfd，但是仍然可能将一个事件排队到所有附加到共享fd源的epfd。</p>
+</blockquote>
+<p>该选项只支持和<code>EPOLL_CTL_ADD</code>使用</p>
+<h2 id="使用SO-REUSEPORT"><a href="#使用SO-REUSEPORT" class="headerlink" title="使用SO_REUSEPORT"></a>使用SO_REUSEPORT</h2><p>这个就是交给内核去做负载均衡了</p>
 <hr>
-<p>该章介绍的代理类很好理解, 需要掌握的是这种编程思想</p>
+<h1 id="Nginx-惊群效率的考虑"><a href="#Nginx-惊群效率的考虑" class="headerlink" title="Nginx 惊群效率的考虑"></a>Nginx 惊群效率的考虑</h1><p>Nginx 的进程数时固定的, 所以他发生惊群时, 导致的后果并没有那么严重, 反而当连接数非常大时, 关闭 accept_mutex, 效率还会提升<br>因为有巨大的连接量时, 如果还是每个进程互斥的去接收新连接, 效率可想而知, 但是所有的进程全部激活各自去抢, 反而效率会高一些</p>
 
       
     </div>
@@ -477,7 +504,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C-沉思录/" rel="tag"># C++沉思录</a>
+            <a href="/tags/Nginx-C/" rel="tag"># Nginx C</a>
           
         </div>
       
@@ -490,8 +517,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/08/Hello My World/" rel="next" title="Hello My New World">
-                <i class="fa fa-chevron-left"></i> Hello My New World
+              <a href="/2019/07/15/诗词/" rel="next" title="诗词">
+                <i class="fa fa-chevron-left"></i> 诗词
               </a>
             
           </div>
@@ -499,10 +526,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/15/诗词/" rel="prev" title="诗词">
-                诗词 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -701,7 +724,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面临的问题"><span class="nav-number">2.</span> <span class="nav-text">面临的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决办法"><span class="nav-number">3.</span> <span class="nav-text">解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代理类"><span class="nav-number">3.1.</span> <span class="nav-text">代理类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Nginx-处理惊群"><span class="nav-number">1.</span> <span class="nav-text">Nginx 处理惊群</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用锁的方式"><span class="nav-number">1.1.</span> <span class="nav-text">使用锁的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#采用EPOLLEXCLUSIVE"><span class="nav-number">1.2.</span> <span class="nav-text">采用EPOLLEXCLUSIVE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用SO-REUSEPORT"><span class="nav-number">1.3.</span> <span class="nav-text">使用SO_REUSEPORT</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nginx-惊群效率的考虑"><span class="nav-number">2.</span> <span class="nav-text">Nginx 惊群效率的考虑</span></a></li></ol></div>
             
 
           </div>
