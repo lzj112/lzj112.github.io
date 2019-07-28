@@ -94,12 +94,10 @@
 <meta property="og:site_name" content="LZJ`s BLOG">
 <meta property="og:description" content="Nginx 是一个多进程的模型, 后台进程包括一个 master 进程和多个 worker 进程.master 进程负责和用户进行交互以及对 worker 进程的管理;worker 进程进行各类事件的处理">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://lzj112.github.io/2019/07/21/Nginx源码学习:惊群的处理/nginx_1.png">
-<meta property="og:updated_time" content="2019-07-28T07:54:10.209Z">
+<meta property="og:updated_time" content="2019-07-28T10:51:47.391Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx源码学习:惊群的处理">
 <meta name="twitter:description" content="Nginx 是一个多进程的模型, 后台进程包括一个 master 进程和多个 worker 进程.master 进程负责和用户进行交互以及对 worker 进程的管理;worker 进程进行各类事件的处理">
-<meta name="twitter:image" content="http://lzj112.github.io/2019/07/21/Nginx源码学习:惊群的处理/nginx_1.png">
 
 
 
@@ -437,7 +435,6 @@
         <p>Nginx 是一个多进程的模型, 后台进程包括一个 master 进程和多个 worker 进程.<br>master 进程负责和用户进行交互以及对 worker 进程的管理;<br>worker 进程进行各类事件的处理</p>
 <a id="more"></a>
 
-<p><img src="nginx_1.png" alt></p>
 <h1 id="Nginx-处理惊群"><a href="#Nginx-处理惊群" class="headerlink" title="Nginx 处理惊群"></a>Nginx 处理惊群</h1><p>上面介绍过, nginx 中所有的 worker 进程都继承了 master 进程的监听 socketfd, 调用 epoll_wait 进程等待, 这样的话如果没有任何处理, 那么一个新连接到来时, 会有多个 worker 进程会唤醒, 但是只有一个 worker 进程会 accept 成功, 其余皆失败, 那么这样就导致了性能的浪费</p>
 <p><strong>accept已经不会再导致惊群的出现</strong><br>linux 2.6 版本之前, 监听同一个 socketfd 的进程会挂在同一个等待队列上, 当请求到来时, 唤醒所有等待的进程,<br>2.6 版本之后, 引入了一个标记位<code>WQ_FLAG_EXCLUSIVE</code>, 设置等待队列的<code>flag</code>为<code>EXCLUSIVE</code>, 表示一次只有一个进程会被唤醒, 当有新连接进来时, 在唤醒等待队列的函数里(<code>__wake_up_common()</code>), 会将传进来的参数(<code>nr_exclusive</code>, 值1)和<code>WQ_FLAG_EXCLUSIVE</code>做 <code>&amp;</code>运算, 结果为真, 跳出循环</p>
 <p><strong>nginx的处理方式</strong></p>
