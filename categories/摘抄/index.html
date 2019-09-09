@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="STL,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -86,18 +86,16 @@
 
 
 
-<meta name="description" content="std::sort的使用姿势不对会导致程序 core 掉">
-<meta name="keywords" content="STL">
-<meta property="og:type" content="article">
-<meta property="og:title" content="std::sort的坑">
-<meta property="og:url" content="http://lzj112.github.io/2019/08/31/std::sort的坑/index.html">
+<meta name="description" content="技术笔记&amp;个人杂谈">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LZJ`s BLOG">
+<meta property="og:url" content="http://lzj112.github.io/categories/摘抄/index.html">
 <meta property="og:site_name" content="LZJ`s BLOG">
-<meta property="og:description" content="std::sort的使用姿势不对会导致程序 core 掉">
+<meta property="og:description" content="技术笔记&amp;个人杂谈">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-31T02:06:23.795Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="std::sort的坑">
-<meta name="twitter:description" content="std::sort的使用姿势不对会导致程序 core 掉">
+<meta name="twitter:title" content="LZJ`s BLOG">
+<meta name="twitter:description" content="技术笔记&amp;个人杂谈">
 
 
 
@@ -127,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://lzj112.github.io/2019/08/31/std::sort的坑/">
+  <link rel="canonical" href="http://lzj112.github.io/categories/摘抄/">
 
 
 
 
 
-  <title>std::sort的坑 | LZJ`s BLOG</title>
+  <title>Category: 摘抄 | LZJ`s BLOG</title>
   
 
 
@@ -152,7 +150,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -288,227 +286,53 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block category">
 
-  
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>摘抄<small>Category</small>
+        </h1>
+      </div>
 
-  
-  
-  
+      
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lzj112.github.io/2019/08/31/std::sort的坑/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lvbai">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/Balor.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LZJ`s BLOG">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
+            <a class="post-title-link" href="/2019/07/15/摘抄/" itemprop="url">
+              
+                <span itemprop="name">摘抄</span>
+              
+            </a>
         
-          <h1 class="post-title" itemprop="name headline">std::sort的坑</h1>
-        
+      </h2>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-31T10:01:51+08:00">
-                2019-08-31
-              </time>
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-07-15T10:03:07+08:00" content="2019-07-15">
+          07-15
+        </time>
+      </div>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/08/31/std::sort的坑/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/08/31/std::sort的坑/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  556
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>std::sort的使用姿势不对会导致程序 core 掉</p>
-<a id="more"></a>
-
-<p><code>std::sort</code>默认是升序排序, 我们也可以自定义比较函数来控制升序还是降序, 或者使用<code>less&lt;T&gt; / greater&lt;T&gt;</code>, 而且使用 sort 排序的区间必须是可以使用随机迭代器随机访问的, 例如 map set 这类无序的容器, 就不能使用sort, 而且排序中的元素互换是通过内存的 copy, 所以容器中存储的元素太过于庞大时, 代价变高, 像<code>std::list</code>也不能使用, 内存的 copy 会改变其<code>next</code>指针</p>
-<blockquote>
-<p>(吐槽: 一直觉得这个<code>随机</code>的翻译不太好有歧义, <code>Random Access</code>的这个 random 翻译出任意的意思不是更容易理解么</p>
-</blockquote>
-<p>std::sort 是一个在绝大数情况下都能达到极限性能的排序算法<br>他在元素数量和递归深度上都有优化, 当递归深度过深时会使用堆排序, 而当元素数量小于限定值时, 会使用插入排序</p>
-<p>std::sort 在内部定义一个 enum <code>_S_threshold = 16</code>(不同环境可能不同), 当容器元素数量小于 <em>S</em>threshold, 使用的插入排序, 大于该值时使用快速排序</p>
-<blockquote>
-<p>(根据快排的特性, 当分段值小于 <em>S</em>threshold 时, 也会改用插入排序)</p>
-</blockquote>
-<p>而另外一个变量 <code>__depth_limit</code>控制了递归深度, 每次递归该值自减, 当其值为 0 时, 认为已经达到了一个很深的递归深度, 比较危险了, 开始使用堆排序</p>
-<h1 id="坑点"><a href="#坑点" class="headerlink" title="坑点"></a>坑点</h1><p>当我们使用自定义的比较函数的时候, 就需要注意了, <strong>当比较两个相等的值时, 永远要返回<code>false</code></strong></p>
-<blockquote>
-<p>– Effective STL</p>
-</blockquote>
-<p>因为在 sort 进行快排的过程中, 会认为容器中一定会有两个元素的比较值返回<code>false</code>, 而当两元素比较返回true的时候就会继续快排的过程, 继续扫描容器, 将小于基准数的元素放一边, 大于基准数的放一边, 而我们自定义的比较函数如果没有返回 <code>false</code>的情况, 就会一直扫描, 导致越界</p>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/STL/" rel="tag"># STL</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/07/21/Nginx源码学习:惊群的处理/" rel="next" title="Nginx源码学习:惊群的处理">
-                <i class="fa fa-chevron-left"></i> Nginx源码学习:惊群的处理
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
       
     </div>
+
   </div>
+  
+  
+  
+
+  
+
 
 
           </div>
@@ -516,17 +340,6 @@
 
 
           
-
-  
-    <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
-    </div>
-
-  
-
-
 
         </div>
         
@@ -549,17 +362,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -677,22 +481,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#坑点"><span class="nav-number">1.</span> <span class="nav-text">坑点</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -870,10 +658,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
@@ -920,30 +704,6 @@
 
     
 
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitmint({
-            id: window.location.pathname, 
-            owner: 'lzj112',
-            repo: 'lzj112.github.io',
-            
-            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
-            oauth: {
-            
-            
-                client_secret: 'e0d8ccbf44e58698fa31e7582f201ecefa35e365',
-            
-                client_id: '2ba7b93c4b96a5e8f031'
-            }});
-        gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
     
 
 
